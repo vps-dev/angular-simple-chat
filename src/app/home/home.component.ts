@@ -10,7 +10,7 @@ import { MessagesService } from '../services/messages.service';
   styleUrls: []
 })
 export class HomeComponent implements OnInit {
-  newMessageForm: FormGroup;
+  messageForm: FormGroup;
   messages: { user: string, text: {} }[];
   isEditMessage: boolean;
   editMessageID: number;
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['/login']);
     }
 
-    this.newMessageForm = new FormGroup(
+    this.messageForm = new FormGroup(
       {
         message: new FormControl("", [Validators.required]),
       }
@@ -42,14 +42,14 @@ export class HomeComponent implements OnInit {
 
   deleteMessage(messageId: number) {
     this.messagesService.delete(messageId);
-    this.newMessageForm.reset();
+    this.messageForm.reset();
   }
 
   editMessage(messageId: number) {
     this.isEditMessage = true;
     this.buttonLabel = 'Edit';
     this.editMessageID = messageId;
-    this.newMessageForm.controls['message'].setValue(this.messages[this.editMessageID].text);
+    this.messageForm.controls['message'].setValue(this.messages[this.editMessageID].text);
   }
 
   scrollChatContainer() {
@@ -60,13 +60,13 @@ export class HomeComponent implements OnInit {
   }
 
   onMessageSubmit() {
-    if (this.newMessageForm.invalid) {
+    if (this.messageForm.invalid) {
       return;
     }
 
     // if edit message mode is active
     if (this.isEditMessage && this.editMessageID != -1) {
-      this.messagesService.edit(this.editMessageID, this.newMessageForm.value.message);
+      this.messagesService.edit(this.editMessageID, this.messageForm.value.message);
       this.isEditMessage = false;
       this.buttonLabel = 'Send';
       this.editMessageID = -1;
@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
     else {
       var message: { user: string, text: string } = {
         user: this.authenticationService.currentUser,
-        text: this.newMessageForm.value.message
+        text: this.messageForm.value.message
       }
       this.messagesService.add(message);
 
@@ -82,6 +82,6 @@ export class HomeComponent implements OnInit {
       this.scrollChatContainer();
     }
 
-    this.newMessageForm.reset();
+    this.messageForm.reset();
   }
 }
