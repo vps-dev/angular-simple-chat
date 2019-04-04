@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="panel">
+    <div class="container">
+        <div class="panel__content">
+            <mat-toolbar>
+               {{ authenticationService.currentUser }}
+            </mat-toolbar>
+            <mat-card class="message-wrapper" #chatContainer>
+              <mat-card-content>
+                <mat-list *ngIf="messages.length" class="pt-0">
+                  <mat-list-item *ngFor="let message of messages; index as i" [className]="message.user === authenticationService.currentUser ? 'own message' : 'message'">
+                    <h4 class="message__ttl">{{ message.user }}</h4>
+                    <div class="message__text">{{ message.text }}</div>
+                    <div class="message__options" *ngIf="message.user === authenticationService.currentUser">
+                      <button mat-icon-button (click)="deleteMessage(i)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                      <button mat-icon-button (click)="editMessage(i)">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </div>
+                  </mat-list-item>
+                </mat-list>
+                <mat-list *ngIf="!messages.length">
+                  <div class="text-center">Start chatting!</div>
+                </mat-list>
+              </mat-card-content>
+            </mat-card>
+            <mat-toolbar>
+              <form [formGroup]="newMessageForm" class="d-flex align-center w-100">
+                <mat-form-field class="flex-grow mr-20">
+                  <input matInput formControlName="message" required placeholder="Your message">
+                </mat-form-field>
+                <button type="button" (click)="onMessageSubmit()" mat-flat-button color="primary">{{ buttonLabel }}</button>
+              </form>
+            </mat-toolbar>
+        </div>
+    </div>
+</div>

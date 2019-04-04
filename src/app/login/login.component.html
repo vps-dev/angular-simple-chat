@@ -1,0 +1,22 @@
+<div class="login d-flex align-center justify-content-center" color="primary">
+  <div class="login__form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-card>
+        <mat-card-content>
+          <div class="text-center">
+            <mat-icon>forum</mat-icon>
+            <h4 class="mat-h2">Login to Chat</h4>
+          </div>
+          <mat-form-field class="d-block">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required>
+            <mat-error>
+              Please enter your username
+            </mat-error>
+          </mat-form-field>
+          <button class="mt-15 w-100" color="primary" mat-flat-button>Login</button>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>

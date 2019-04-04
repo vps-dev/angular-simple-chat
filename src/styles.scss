@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.panel {
+  position: relative;
+  padding: 60px 0 20px;
+
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 250px;
+    width: 100%;
+    z-index: 0;
+    background: #2f9ae0;
+  }
+}
+
+.mat-card {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.mat-list {
+  position: relative;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.d-block {
+  display: block!important;
+}
+
+.d-flex {
+  display: flex!important;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.pt {
+  &-0 {
+    padding-top: 0!important;
+  }
+}
+
+.mt {
+  &-15 {
+    margin-top: 15px!important;
+  }
+  &-20 {
+    margin-top: 20px!important;
+  }
+}
+
+.mr {
+  &-10 {
+    margin-right: 10px;
+  }
+  &-20 {
+    margin-right: 20px;
+  }
+}
+
+.ml {
+  &-10 {
+    margin-left: 10px;
+  }
+}
+
+.mat-h2, .mat-card-title {
+  font-weight: 400;
+}
+
+.mat-h3 {
+  font-weight: 500;
+}
+
+.message-wrapper {
+  height: 400px;
+  overflow-y: auto;
+}
+
+.message {
+  padding: 12px 0;
+  display: flex;
+  position: relative;
+  font-size: 13px;
+  color: rgba(#000, 0.6);
+
+  &.own {
+    padding-right: 50px;
+  }
+
+  .mat-icon-button {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .material-icons {
+    font-size: 19px;
+  }
+
+  &+& {
+    border-top: 1px solid #eee;
+  }
+
+  &__text {
+    word-break: break-word;
+  }
+
+  &__ttl {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0 0 10px;
+    color: rgba(#000, 0.8);
+  }
+
+  &__options {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.mat-form-field {
+  font-size: 14px;
+}
+
+.mat-toolbar-row.mat-toolbar-single-row {
+  height: 75px;
+}

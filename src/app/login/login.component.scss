@@ -1,0 +1,12 @@
+.login {
+  height: 100vh;
+  display: flex;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  background: #2f9ae0;
+
+  &__form {
+    width: 300px;
+  }
+}
